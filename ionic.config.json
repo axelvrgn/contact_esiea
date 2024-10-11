@@ -1,0 +1,7 @@
+{
+  "name": "contact_esiea",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
