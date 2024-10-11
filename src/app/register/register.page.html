@@ -40,7 +40,9 @@
           labelPlacement="stacked"
         />
       </ion-item>
-      <ion-button [disabled]="registerForm.invalid">Sign Up</ion-button>
+      <ion-button [disabled]="registerForm.invalid" (click)="onSignUp"
+        >Sign Up</ion-button
+      >
     </form>
   </div>
 </ion-content>

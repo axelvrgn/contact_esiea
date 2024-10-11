@@ -8,6 +8,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import {
+  AuthenticationService,
+  IUser,
+} from '../core/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -28,7 +32,15 @@ export class RegisterPage implements OnInit {
       Validators.minLength(8),
     ]),
   });
-  constructor() {}
+
+  constructor(private authenticationService: AuthenticationService) {}
 
   ngOnInit() {}
+
+  public onSignUp(): void {
+    this.authenticationService
+      .signInWithEmailAndPassword(this.registerForm.value as unknown as IUser)
+      .then((user) => console.log(user))
+      .catch((error) => console.error(error));
+  }
 }
