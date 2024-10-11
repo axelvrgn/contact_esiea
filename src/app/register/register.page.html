@@ -5,9 +5,42 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">register</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div style="padding: 10px">
+    <form
+      [formGroup]="registerForm"
+      style="display: flex; flex-direction: column"
+    >
+      <ion-item>
+        <ion-input
+          formControlName="fullname"
+          label="Fullname"
+          labelPlacement="stacked"
+          placeholder="John Doe"
+        />
+      </ion-item>
+      @if(registerForm.get('fullname')?.dirty) { @if(
+      registerForm.get('fullname')?.hasError('required')) {
+      <span style="color: red">This field is required</span>
+      } @if( registerForm.get('fullname')?.hasError('minlength')) {
+      <span>Minimum characters should be 2</span>
+      } }
+      <ion-item>
+        <ion-input
+          formControlName="email"
+          label="E-mail"
+          labelPlacement="stacked"
+          placeholder="email@example.com"
+        />
+      </ion-item>
+      <ion-item>
+        <ion-input
+          formControlName="password"
+          label="Password"
+          type="password"
+          labelPlacement="stacked"
+        />
+      </ion-item>
+      <ion-button [disabled]="registerForm.invalid">Sign Up</ion-button>
+    </form>
+  </div>
 </ion-content>
